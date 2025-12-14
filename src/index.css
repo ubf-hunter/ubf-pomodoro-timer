@@ -20,11 +20,11 @@
   --text-secondary: #8a8a9a;
   --text-muted: #4a4a5a;
   --border-color: #2a2a3a;
-  
+
   /* Typography */
   --font-display: 'Syne', sans-serif;
   --font-mono: 'Space Mono', monospace;
-  
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -32,7 +32,7 @@
   --space-lg: 2rem;
   --space-xl: 3rem;
   --space-xxl: 5rem;
-  
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-medium: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,9 +52,16 @@ body {
 /* Background Pattern */
 .app {
   min-height: 100vh;
-  background: 
-    radial-gradient(ellipse at 20% 0%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(124, 92, 255, 0.08) 0%, transparent 50%),
+  background: radial-gradient(
+      ellipse at 20% 0%,
+      rgba(255, 107, 53, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 100%,
+      rgba(124, 92, 255, 0.08) 0%,
+      transparent 50%
+    ),
     linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   position: relative;
 }
@@ -101,7 +108,11 @@ body {
 .logo-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, var(--accent-work), var(--accent-long-break));
+  background: linear-gradient(
+    135deg,
+    var(--accent-work),
+    var(--accent-long-break)
+  );
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -116,7 +127,11 @@ body {
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--text-primary),
+    var(--text-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -167,15 +182,27 @@ body {
 }
 
 .mode-btn.work::before {
-  background: linear-gradient(135deg, var(--accent-work), rgba(255, 107, 53, 0.5));
+  background: linear-gradient(
+    135deg,
+    var(--accent-work),
+    rgba(255, 107, 53, 0.5)
+  );
 }
 
 .mode-btn.break::before {
-  background: linear-gradient(135deg, var(--accent-break), rgba(0, 217, 165, 0.5));
+  background: linear-gradient(
+    135deg,
+    var(--accent-break),
+    rgba(0, 217, 165, 0.5)
+  );
 }
 
 .mode-btn.long-break::before {
-  background: linear-gradient(135deg, var(--accent-long-break), rgba(124, 92, 255, 0.5));
+  background: linear-gradient(
+    135deg,
+    var(--accent-long-break),
+    rgba(124, 92, 255, 0.5)
+  );
 }
 
 .mode-btn.active {
@@ -288,7 +315,8 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -322,22 +350,18 @@ body {
   width: 80px;
   height: 80px;
   background: linear-gradient(135deg, var(--accent-work), #ff8c5a);
-  box-shadow: 
-    0 4px 20px rgba(255, 107, 53, 0.4),
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4),
     0 0 0 0 rgba(255, 107, 53, 0.4);
 }
 
 .control-btn.primary.break {
   background: linear-gradient(135deg, var(--accent-break), #33e6b8);
-  box-shadow: 
-    0 4px 20px rgba(0, 217, 165, 0.4),
-    0 0 0 0 rgba(0, 217, 165, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 217, 165, 0.4), 0 0 0 0 rgba(0, 217, 165, 0.4);
 }
 
 .control-btn.primary.long-break {
   background: linear-gradient(135deg, var(--accent-long-break), #9b7fff);
-  box-shadow: 
-    0 4px 20px rgba(124, 92, 255, 0.4),
+  box-shadow: 0 4px 20px rgba(124, 92, 255, 0.4),
     0 0 0 0 rgba(124, 92, 255, 0.4);
 }
 
@@ -589,30 +613,30 @@ body {
   .container {
     padding: var(--space-md);
   }
-  
+
   .logo h1 {
     font-size: 1.5rem;
   }
-  
+
   .timer-ring-container {
     width: 280px;
     height: 280px;
   }
-  
+
   .timer-display {
     font-size: 3.5rem;
   }
-  
+
   .mode-btn {
     padding: var(--space-xs) var(--space-sm);
     font-size: 0.75rem;
   }
-  
+
   .control-btn.primary {
     width: 70px;
     height: 70px;
   }
-  
+
   .settings-panel {
     max-width: 100%;
   }
@@ -633,4 +657,196 @@ body {
 
 .timer-ring-container.completed {
   animation: celebrate 0.5s ease-out;
+}
+
+/* Clickable timer */
+.timer-ring-container.clickable {
+  cursor: pointer;
+}
+
+.timer-ring-container.clickable:hover .timer-ring-bg {
+  stroke: var(--text-muted);
+  transition: stroke var(--transition-medium);
+}
+
+.edit-hint {
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+/* Duration Picker */
+.duration-picker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: var(--space-lg);
+  width: 100%;
+  max-width: 360px;
+  z-index: 50;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.duration-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.duration-picker-close {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.duration-picker-close:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.duration-picker-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.duration-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.duration-preset-btn {
+  padding: var(--space-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.duration-preset-btn:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.duration-preset-btn.active {
+  background: var(--accent-work);
+  border-color: var(--accent-work);
+  color: var(--bg-primary);
+}
+
+.mode-btn.break + .timer-section .duration-preset-btn.active,
+.timer-section:has(.timer-display.break) .duration-preset-btn.active {
+  background: var(--accent-break);
+  border-color: var(--accent-break);
+}
+
+.timer-section:has(.timer-display.long-break) .duration-preset-btn.active {
+  background: var(--accent-long-break);
+  border-color: var(--accent-long-break);
+}
+
+.duration-custom {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-md);
+}
+
+.duration-custom-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.duration-custom-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.duration-custom-input {
+  flex: 1;
+  padding: var(--space-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.duration-custom-input:focus {
+  outline: none;
+  border-color: var(--accent-work);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+.duration-custom-input::placeholder {
+  color: var(--text-muted);
+}
+
+.duration-custom-unit {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.duration-custom-btn {
+  padding: var(--space-sm) var(--space-md);
+  background: linear-gradient(135deg, var(--accent-work), #ff8c5a);
+  border: none;
+  border-radius: 10px;
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.duration-custom-btn:hover {
+  transform: scale(1.05);
+}
+
+.duration-custom-btn:active {
+  transform: scale(0.98);
+}
+
+/* Timer section needs position relative for the picker */
+.timer-section {
+  position: relative;
 }

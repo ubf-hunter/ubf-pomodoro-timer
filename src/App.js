@@ -76,6 +76,13 @@ const MODES = {
   'long-break': { name: 'Long Break', defaultMinutes: 15 },
 };
 
+// Preset durations for quick selection
+const PRESETS = {
+  work: [15, 20, 25, 30, 45, 60, 90],
+  break: [3, 5, 10, 15],
+  'long-break': [10, 15, 20, 30],
+};
+
 // Custom hook for audio
 const useAudio = () => {
   const audioContextRef = useRef(null);
@@ -144,6 +151,8 @@ function App() {
     type: '',
   });
   const [isCompleted, setIsCompleted] = useState(false);
+  const [showDurationPicker, setShowDurationPicker] = useState(false);
+  const [customDuration, setCustomDuration] = useState('');
 
   const { playSound } = useAudio();
   const intervalRef = useRef(null);
@@ -179,9 +188,41 @@ function App() {
       setMode(newMode);
       setTimeLeft(getModeDuration(newMode));
       setIsRunning(false);
+      setShowDurationPicker(false);
     },
     [getModeDuration]
   );
+
+  // Handle duration selection
+  const selectDuration = (minutes) => {
+    setTimeLeft(minutes * 60);
+    setShowDurationPicker(false);
+    setCustomDuration('');
+    // Update settings for the current mode
+    if (mode === 'work') {
+      setSettings((prev) => ({ ...prev, workMinutes: minutes }));
+    } else if (mode === 'break') {
+      setSettings((prev) => ({ ...prev, breakMinutes: minutes }));
+    } else {
+      setSettings((prev) => ({ ...prev, longBreakMinutes: minutes }));
+    }
+  };
+
+  // Handle custom duration input
+  const handleCustomDuration = (e) => {
+    e.preventDefault();
+    const minutes = parseInt(customDuration, 10);
+    if (minutes > 0 && minutes <= 180) {
+      selectDuration(minutes);
+    }
+  };
+
+  // Toggle duration picker
+  const toggleDurationPicker = () => {
+    if (!isRunning) {
+      setShowDurationPicker(!showDurationPicker);
+    }
+  };
 
   // Handle timer completion
   const handleCompletion = useCallback(() => {
@@ -243,17 +284,19 @@ function App() {
       .padStart(2, '0')}`;
     document.title = isRunning
       ? `${timeString} - ${MODES[mode].name}`
-      : 'Pomodoro Timer';
+      : 'Ubf Pomodoro';
   }, [timeLeft, isRunning, mode]);
 
   // Control functions
   const toggleTimer = () => {
     setIsRunning(!isRunning);
+    setShowDurationPicker(false);
   };
 
   const resetTimer = () => {
     setIsRunning(false);
     setTimeLeft(getModeDuration(mode));
+    setShowDurationPicker(false);
   };
 
   const skipTimer = () => {
@@ -328,7 +371,9 @@ function App() {
           <div
             className={`timer-ring-container ${isRunning ? 'running' : ''} ${
               isCompleted ? 'completed' : ''
-            }`}
+            } ${!isRunning ? 'clickable' : ''}`}
+            onClick={toggleDurationPicker}
+            title={!isRunning ? 'Cliquez pour changer la durée' : ''}
           >
             <svg className="timer-ring" viewBox="0 0 300 300">
               <defs>
@@ -377,9 +422,65 @@ function App() {
               <div className={`timer-display ${mode}`}>
                 {formatTime(timeLeft)}
               </div>
-              <div className="timer-label">{MODES[mode].name}</div>
+              <div className="timer-label">
+                {MODES[mode].name}
+                {!isRunning && (
+                  <span className="edit-hint"> • Cliquez pour modifier</span>
+                )}
+              </div>
             </div>
           </div>
+
+          {/* Duration Picker */}
+          {showDurationPicker && (
+            <div className="duration-picker">
+              <div className="duration-picker-header">
+                <span>Choisir une durée ({MODES[mode].name})</span>
+                <button
+                  className="duration-picker-close"
+                  onClick={() => setShowDurationPicker(false)}
+                >
+                  <CloseIcon />
+                </button>
+              </div>
+              <div className="duration-presets">
+                {PRESETS[mode].map((minutes) => (
+                  <button
+                    key={minutes}
+                    className={`duration-preset-btn ${
+                      timeLeft === minutes * 60 ? 'active' : ''
+                    }`}
+                    onClick={() => selectDuration(minutes)}
+                  >
+                    {minutes} min
+                  </button>
+                ))}
+              </div>
+              <div className="duration-custom">
+                <span className="duration-custom-label">
+                  Ou entrez une durée personnalisée :
+                </span>
+                <form
+                  onSubmit={handleCustomDuration}
+                  className="duration-custom-form"
+                >
+                  <input
+                    type="number"
+                    className="duration-custom-input"
+                    placeholder="Ex: 45"
+                    value={customDuration}
+                    onChange={(e) => setCustomDuration(e.target.value)}
+                    min="1"
+                    max="180"
+                  />
+                  <span className="duration-custom-unit">min</span>
+                  <button type="submit" className="duration-custom-btn">
+                    OK
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Control Buttons */}
