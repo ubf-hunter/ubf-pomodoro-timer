@@ -1,0 +1,29 @@
+{
+  "short_name": "Ubf Pomodoro",
+  "name": "Ubf Pomodoro - Timer de Productivité",
+  "description": "Timer de productivité utilisant la technique Pomodoro pour améliorer votre concentration",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+}

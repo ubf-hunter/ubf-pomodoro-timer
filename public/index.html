@@ -1,19 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0a0f" />
-    <meta name="description" content="Ubf Pomodoro Timer - Focus & Productivity" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <title>Ubf Pomodoro</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="%PUBLIC_URL%/logo.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+
+  <!-- Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="description"
+    content="Ubf Pomodoro - Timer de productivité gratuit utilisant la technique Pomodoro. Améliorez votre concentration et gérez votre temps efficacement." />
+  <meta name="keywords"
+    content="pomodoro, timer, productivité, concentration, gestion du temps, focus, technique pomodoro, ubf" />
+  <meta name="author" content="UBF" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://votre-domaine.com/" />
+  <meta property="og:title" content="Ubf Pomodoro - Timer de Productivité" />
+  <meta property="og:description"
+    content="Timer de productivité gratuit utilisant la technique Pomodoro. Améliorez votre concentration et gérez votre temps efficacement." />
+  <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://votre-domaine.com/" />
+  <meta name="twitter:title" content="Ubf Pomodoro - Timer de Productivité" />
+  <meta name="twitter:description"
+    content="Timer de productivité gratuit utilisant la technique Pomodoro. Améliorez votre concentration et gérez votre temps efficacement." />
+  <meta name="twitter:image" content="%PUBLIC_URL%/logo.png" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "VOTRE_CLARITY_ID");
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTDWD8LJ14"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DTDWD8LJ14');
+  </script>
+
+  <title>Ubf Pomodoro - Timer de Productivité Gratuit</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>
