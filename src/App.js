@@ -63,7 +63,7 @@ const CloseIcon = () => (
 
 const LogoIcon = () => (
   <img
-    src="/LogoBlue.svg"
+    src="/LogoBlue.png"
     alt="UBF Logo"
     style={{ width: '100%', height: '100%' }}
   />
