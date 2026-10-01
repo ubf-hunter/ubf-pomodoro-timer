@@ -653,14 +653,14 @@ function App() {
           }}
         >
           <a
-            href="/mentions-legales"
+            href="#mentions-legales"
             style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
           >
             Mentions légales
           </a>
           <span>•</span>
           <a
-            href="/politique-confidentialite"
+            href="#politique-confidentialite"
             style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
           >
             Politique de confidentialité

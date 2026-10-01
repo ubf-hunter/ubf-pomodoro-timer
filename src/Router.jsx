@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import App from './App';
 import Legal from './pages/Legal';
 import Privacy from './pages/Privacy';
 
 export default function Router() {
-  const path = window.location.pathname;
+  const [hash, setHash] = useState(window.location.hash);
 
-  if (path === '/mentions-legales') {
+  useEffect(() => {
+    const handleHashChange = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  if (hash === '#mentions-legales') {
     return <Legal />;
   }
 
-  if (path === '/politique-confidentialite') {
+  if (hash === '#politique-confidentialite') {
     return <Privacy />;
   }
 
-  // Par défaut, on retourne ton App.js d'origine inchangé
   return <App />;
 }

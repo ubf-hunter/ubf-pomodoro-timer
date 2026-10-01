@@ -96,7 +96,7 @@ export default function Legal() {
 
         <div style={{ marginTop: 'var(--space-xl)', textAlign: 'center' }}>
           <a
-            href="/"
+            href="#"
             className="mode-btn active"
             style={{
               display: 'inline-block',
