@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://votre-domaine.com/sitemap.xml
+Sitemap: https://pomodoro.uwayo-beni.com/sitemap.xml
