@@ -623,6 +623,50 @@ function App() {
       >
         {notification.message}
       </div>
+      {/* Footer SEO / Liens Légaux */}
+      <footer
+        style={{
+          textAlign: 'center',
+          padding: 'var(--space-lg) 0 var(--space-md) 0',
+          fontSize: '0.8rem',
+          color: 'var(--text-muted)',
+        }}
+      >
+        <p>
+          Un outil développé par{' '}
+          <a
+            href="https://uwayo-beni.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--accent-work)', textDecoration: 'none' }}
+          >
+            Uwayo Beni
+          </a>
+          .
+        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 'var(--space-md)',
+            marginTop: '4px',
+          }}
+        >
+          <a
+            href="/mentions-legales"
+            style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+          >
+            Mentions légales
+          </a>
+          <span>•</span>
+          <a
+            href="/politique-confidentialite"
+            style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+          >
+            Politique de confidentialité
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
